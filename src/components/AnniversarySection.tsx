@@ -8,8 +8,8 @@ interface AnniversarySectionProps {
 
 export default function AnniversaryPage({ onFinish }: AnniversarySectionProps) {
   const [isExploding, setIsExploding] = useState(false); 
-  // 🎯 ย้ายมาวันที่ 25 เรียบร้อยแล้วครับ
-  const anniversaryDay = 25; 
+  // 🎯 เปลี่ยนเป็นวันที่ 1 เรียบร้อยครับ
+  const anniversaryDay = 1; 
   
   const handleBurst = () => {
     setIsExploding(true);
@@ -62,17 +62,18 @@ export default function AnniversaryPage({ onFinish }: AnniversarySectionProps) {
 
           <div className="w-[90%] bg-white/60 border border-[#f4a7be]/30 rounded-xl p-5 shadow-sm relative">
             <div className="flex justify-between items-center mb-6 px-1">
-              <span className="text-[#c2547a] font-black text-[14px] uppercase tracking-[0.2em]">June 2026</span>
+              {/* 📅 อัปเดตหัวข้อเป็น February 2026 */}
+              <span className="text-[#c2547a] font-black text-[14px] uppercase tracking-[0.2em]">February 2026</span>
             </div>
             <div className="grid grid-cols-7 gap-y-4 text-center items-center">
               {['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map((day, index) => (
                 <span key={`h-${index}`} className="text-[9px] font-black text-[#e8789a]/50 tracking-tighter">{day}</span>
               ))}
               
-              {/* June 2026 วันที่ 1 เริ่มวันจันทร์ -> เว้นวันอาทิตย์ไว้ 1 ช่อง */}
-              <div key="empty-1" className="h-10" />
+              {/* 🗓️ ปี 2026 วันที่ 1 กุมภาพันธ์ ตรงกับวันอาทิตย์เป๊ะๆ จึงเอา empty div ตัวเดิมออก เพื่อให้วันที่ 1 เริ่มที่ช่อง SUN ทันที */}
               
-              {Array.from({ length: 30 }, (_, i) => i + 1).map(day => (
+              {/* กุมภาพันธ์ 2026 มี 28 วัน */}
+              {Array.from({ length: 28 }, (_, i) => i + 1).map(day => (
                 <div key={`d-${day}`} className="relative h-10 flex items-center justify-center">
                   {day === anniversaryDay ? (
                     <motion.button 
