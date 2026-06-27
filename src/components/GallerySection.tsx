@@ -80,23 +80,25 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
 
         {/* หน้าหลัง (Back): ข้อความ */}
         <div
-          className="absolute inset-3 bottom-12 flex flex-col items-center justify-center p-3 bg-[#fff8fb] rounded-sm overflow-hidden"
+          className="absolute inset-3 bottom-12 flex flex-col items-center justify-between p-2 bg-[#fff8fb] rounded-sm"
           style={{ backfaceVisibility: "hidden" as const, WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
-          <span className="text-[#e8789a] mb-1 text-base flex-shrink-0">♥</span>
+          <span className="text-[#e8789a] text-sm flex-shrink-0 mt-1">♥</span>
           
-          <div className="overflow-y-auto flex-1 w-full flex items-center justify-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {/* 🎯 ปรับให้ตัวอักษรของการ์ดใบที่สองมีขนาดและหน้าตาเท่ากับการ์ดใบอื่นทั้งหมด */}
-            <p className="text-[#c2547a] font-bold text-center italic break-words text-[12px] leading-relaxed px-1">
+          {/* 🎯 ส่วนที่แก้ไข: กล่องข้อความสกรอลล์ได้เมื่อยาวเกินพื้นที่การ์ด */}
+          <div className="w-full flex-1 my-2 overflow-y-auto px-1 flex items-center scrollbar-none" style={{ scrollbarWidth: 'none' }}>
+            <p className="text-[#c2547a] font-bold text-center italic break-words text-[11px] leading-relaxed w-full">
               "{messages[idx % messages.length]}"
             </p>
           </div>
 
-          <div className="w-8 h-[1px] bg-[#e8789a]/20 my-1 flex-shrink-0" />
-          <span className="text-[#c2547a]/40 text-[9px] uppercase tracking-tighter flex-shrink-0">
-            Memory #{idx + 1}
-          </span>
-          <span className="absolute bottom-2 text-[#e8789a]/30 text-[8px]">Tap to flip back</span>
+          <div className="w-full flex flex-col items-center flex-shrink-0">
+            <div className="w-8 h-[1px] bg-[#e8789a]/20 mb-1" />
+            <span className="text-[#c2547a]/40 text-[9px] uppercase tracking-tighter">
+              Memory #{idx + 1}
+            </span>
+            <span className="text-[#e8789a]/30 text-[7px] mt-0.5">Tap to flip back</span>
+          </div>
         </div>
       </motion.div>
     </motion.div>
@@ -203,9 +205,13 @@ export default function GallerySection({ onNext }: GallerySectionProps) {
         ))}
       </div>
 
+      {/* ซ่อนสกรอลบาร์ฝั่ง Webkit */}
       <style jsx>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 0px;
+        }
+        :global(.scrollbar-none::-webkit-scrollbar) {
+          display: none;
         }
       `}</style>
     </section>
