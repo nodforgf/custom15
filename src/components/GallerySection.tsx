@@ -18,12 +18,12 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const messages = [
-    "Happy", // idx 0 (Memory #1)
-    "ANV", // idx 1 (Memory #2)
-    "เด็กอ้วน",     // idx 2 (Memory #3)
-    "Rak",
-    "Tee",
-    "Sod",
+    "ครั้งแรกที่เราเจอกันน วันที่ 31 ธันวาา พอตั้งแต่วันนั้นเราก็อยู่ด้วยกันมาตลอดเยยเนอะะ มีกันทุกวันเลย ไปไหนทำอะไรก็ทำด้วยกันตลอด แทบไม่ห่างกันเลยแหนะะ", // idx 0 (Memory #1)
+    "วันที่ขอเป็นแฟน🥺 ตื่นเต้นมากตอนนั้น เค้ารู้แค่ว่าไม่อยากปล่อยเธอไปให้ใคร ต้องรีบขออแย้วว ไม่งั้นคงไม่มีเธออีก ไม่เคยอยากเสียเธอไปเลย เธอเป็นคนที่เค้าอยากใช้ชีวิตด้วยมากๆ", // idx 1 (Memory #2)
+    "ครบรอบหนึ่งเดือนน ดอกไม้ช่อแรกที่ให้เธออ เธอเป็นคนแรกเลยนะคะ ที่เค้าให้ดอกไม้",     // idx 2 (Memory #3)
+    "ครบรอบสองเดือน ต้าววหมู เรียกเค้าาหมูดีนัก เยยเติมอู๊ดให้เยยนี่",
+    "ครบรอบสามเดือนน ดอกไม้อีกช่อนึง จ๋วยเหมือนเธอเยยแหนะแฟนน",
+    "ครบรอบสี่เดือนน สิ่งที่แฟนอยากได้ บิ๊กไบค์สุดดเท่ ไม่ว่าแฟนอยากได้อะไรเค้าจำได้หมดด",
   ];
 
   return (
@@ -105,12 +105,12 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
 
 export default function GallerySection({ onNext }: GallerySectionProps) {
   const myPhotos = [
-    "/images/1.png",
-    "/images/2.jpeg",
-    "/images/3.jpeg",
-    "/images/4.jpeg",
-    "/images/5.jpeg",
-    "/images/6.jpeg",
+    "/images/1.jpg",
+    "/images/2.jpg",
+    "/images/3.jpg",
+    "/images/4.jpg",
+    "/images/5.jpg",
+    "/images/6.jpg",
   ];
 
   const photoDates = [
