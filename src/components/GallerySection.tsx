@@ -26,6 +26,9 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
     "ครบรอบสี่เดือนน สิ่งที่แฟนอยากได้ บิ๊กไบค์สุดดเท่ ไม่ว่าแฟนอยากได้อะไรเค้าจำได้หมดด",
   ];
 
+  // 🎯 เช็กว่าเป็นหมวดข้อความยาว (การ์ดใบที่ 1 และ 2) หรือไม่
+  const isLongText = idx === 0 || idx === 1;
+
   return (
     <motion.div
       className="absolute cursor-pointer z-10"
@@ -88,9 +91,12 @@ function PhotoCard({ photoUrl, idx, style, photoDate }: PhotoCardProps) {
             <span className="text-[#e8789a] text-sm">♥</span>
           </div>
           
-          {/* 🎯 ส่วนที่แก้ไขใหม่: เอาพวกรอยหยัก flex items-center ออก แล้วใช้ block แทน เพื่อไม่ให้ข้อความส่วนแรกโดนดันทะลุหายไป */}
-          <div className="w-full overflow-y-auto px-1 block scrollbar-none" style={{ scrollbarWidth: 'none' }}>
-            <div className="w-full pt-1 pb-3">
+          {/* 🎯 ส่วนที่แก้ไข: ถ้าเป็นการ์ด 1,2 (isLongText) ให้ใช้ block ชิดบนเพื่อให้สกรอลล์ได้ปกติ ถ้าการ์ดอื่นใช้ flex items-center ดึงให้อยู่ตรงกลาง */}
+          <div 
+            className={`w-full overflow-y-auto px-1 scrollbar-none ${isLongText ? 'block' : 'flex items-center'}`} 
+            style={{ scrollbarWidth: 'none' }}
+          >
+            <div className="w-full pt-1 pb-2">
               <p className="text-[#c2547a] font-bold text-center italic break-words text-[11px] leading-relaxed w-full">
                 "{messages[idx % messages.length]}"
               </p>
